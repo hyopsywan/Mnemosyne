@@ -1,2 +1,2 @@
 # Mnemosyne
-*Projeto Software
+Projeto Software
