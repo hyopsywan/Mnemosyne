@@ -1,0 +1,295 @@
+/* =====================================================                                     */
+/*  AULA DE HTML + CSS (BÃSICO) â€” ARQUIVO: style.css                                         */
+/*  Objetivo: demonstrar seletores, variÃ¡veis, box model, tipografia, cores, links e layout  */
+/* =====================================================                                     */
+
+/* ---------- PASSO A: RESET SIMPLES + BOX-SIZING ------------------------------------------ */
+* {
+  /* Seletor universal: pega todos os elementos */
+  box-sizing: border-box; /* Faz padding e border entrarem no cÃ¡lculo total da caixa */
+}
+html, /* Define altura completa para html... */
+body {
+  /* ...e para body, ajudando layouts que usam 100% da tela */
+  height: 100%; /* Altura total da janela */
+}
+body {
+  /* Estilo base do corpo da pÃ¡gina (texto visÃ­vel) */
+  margin: 0; /* Remove a margem padrÃ£o do navegador */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; /* Fonte legÃ­vel e comum */
+  line-height: 1.5; /* Altura das linhas para melhorar a leitura */
+  background: #f6f7fb; /* Cor de fundo clara e neutra */
+  color: #1f2937; /* Cor principal do texto (cinza escuro) */
+}
+
+/* ---------- PASSO B: VARIÃVEIS CSS (Custom Properties) ----------------------------------- */
+:root {
+  /* :root Ã© a raiz do documento; ideal para declarar variÃ¡veis globais */
+  --cor-primaria: #0ea5e9; /* Azul principal (botÃµes/links/destaques) */
+  --cor-secundaria: #f59e0b; /* Laranja (avisos/destaques alternativos) */
+  --fundo-card: #ffffff; /* Fundo branco para cartÃµes/seÃ§Ãµes */
+  --borda-card: #e5e7eb; /* Cinza claro para bordas sutis */
+  --fundo-tabela: #f1f5f9; /* Fundo suave para tabelas */
+}
+
+/* ---------- PASSO C: TIPOGRAFIA BÃSICA --------------------------------------------------- */
+h1, /* TÃ­tulos principais */
+h2, /* SubtÃ­tulos */
+h3 {
+  /* TÃ­tulos menores */
+  line-height: 1.2; /* TÃ­tulos mais â€œcompactosâ€ que o corpo do texto */
+}
+h1 {
+  /* Estilo do tÃ­tulo principal */
+  font-size: 2rem; /* Tamanho grande para chamar atenÃ§Ã£o */
+  margin: 0.2rem 0; /* Margem pequena acima/abaixo */
+}
+h2 {
+  /* Estilo dos subtÃ­tulos */
+  font-size: 1.5rem; /* Um pouco menor que h1 */
+  margin: 0 0 0.5rem; /* Sem margem superior; espaÃ§o abaixo */
+}
+h3 {
+  /* Estilo dos tÃ­tulos de terceiro nÃ­vel */
+  font-size: 1.125rem; /* Tamanho intermediÃ¡rio */
+  margin: 0.5rem 0; /* EspaÃ§os acima/abaixo */
+}
+p {
+  /* ParÃ¡grafos */
+  margin: 0.6rem 0; /* EspaÃ§o vertical confortÃ¡vel entre parÃ¡grafos */
+}
+
+/* ---------- PASSO D: LINKS + ESTADOS (pseudo-classes) ------------------------------------ */
+a {
+  /* Links normais */
+  color: var(--cor-primaria); /* Usa a cor-primaria (azul) */
+  text-decoration: none; /* Remove o sublinhado padrÃ£o */
+}
+a:hover, /* Quando o mouse passa por cima... */
+a:focus {
+  /* ...ou quando o link recebe foco (teclado/acessibilidade) */
+  text-decoration: underline; /* Mostra sublinhado para indicar interaÃ§Ã£o */
+}
+a:active {
+  /* Enquanto o link estÃ¡ sendo clicado */
+  opacity: 0.8; /* Leve feedback visual (escurece) */
+}
+
+/* ---------- PASSO E: TOPO + MENU HORIZONTAL ---------------------------------------------- */
+.topo {
+  /* Ãrea do cabeÃ§alho da pÃ¡gina */
+  padding: 1rem; /* EspaÃ§o interno para â€œrespirarâ€ */
+  text-align: center; /* Centraliza textos e elementos internos */
+  background: linear-gradient(
+    180deg,
+    rgba(14, 165, 233, 0.15),
+    transparent
+  ); /* DegradÃª suave */
+}
+
+/* === LOGO (versÃ£o em DIV) ================================================================ */
+/* Usaremos <div class="logo">LOGO</div> em vez de <img>.                                    */
+/* Assim, o visual Ã© 100% controlado via CSS (sem atributos inline).                         */
+.logo {
+  /* Caixa da logo, desenhada sÃ³ com CSS */
+  width: 120px; /* Largura da logo */
+  height: 60px; /* Altura da logo */
+  background: var(--cor-primaria); /* Fundo azul da logo */
+  color: #ffffff; /* Texto â€œLOGOâ€ em branco */
+  display: flex; /* Habilita centralizaÃ§Ã£o fÃ¡cil com flexbox */
+  align-items: center; /* Centraliza verticalmente o texto */
+  justify-content: center; /* Centraliza horizontalmente o texto */
+  font-weight: 700; /* Deixa o texto da logo em negrito */
+  letter-spacing: 1px; /* Afasta levemente as letras */
+  border-radius: 6px; /* Cantos arredondados para um visual moderno */
+  margin: 0 auto 0.5rem; /* Centraliza a caixa e dÃ¡ margem abaixo */
+  user-select: none; /* Impede selecionar o texto â€œLOGOâ€ sem querer */
+}
+
+/* (Opcional) Se em algum momento vocÃª preferir usar <img class="logo-img" src="...">...     */
+/* ...este bloco dÃ¡ um tamanho padrÃ£o para a imagem da logo.                                  */
+.logo-img {
+  /* Apenas se optar por imagem ao invÃ©s da div */
+  width: 120px; /* Largura da imagem */
+  height: 60px; /* Altura da imagem */
+  display: block; /* Remove espaÃ§o extra abaixo de imagens inline */
+  margin: 0 auto 0.5rem; /* Centraliza e dÃ¡ espaÃ§o abaixo */
+  object-fit: contain; /* Garante que a imagem caiba sem cortar */
+}
+
+/* SubtÃ­tulo do topo */
+.subtitulo {
+  color: #475569; /* Cinza mÃ©dio para diferenciar do h1 */
+  margin-top: 0; /* Remove espaÃ§o extra acima (jÃ¡ temos do h1) */
+}
+
+/* Lista de links do menu principal */
+.menu {
+  list-style: none; /* Remove as bolinhas padrÃ£o da lista */
+  padding: 0; /* Zera o padding padrÃ£o da UL */
+  margin: 0.8rem 0 0; /* EspaÃ§o acima do menu; zero abaixo */
+  display: flex; /* Coloca os itens lado a lado (em linha) */
+  gap: 0.75rem; /* EspaÃ§o entre cada item */
+  justify-content: center; /* Centraliza o conjunto de itens */
+}
+.menu a {
+  /* Estilo de cada link do menu */
+  display: inline-block; /* Permite aplicar padding corretamente */
+  padding: 0.5rem 0.8rem; /* Ãrea clicÃ¡vel confortÃ¡vel */
+  border-radius: 0.5rem; /* Cantos arredondados */
+  background: #ffffff; /* Fundo branco para parecer um â€œpÃ­lulaâ€ */
+  border: 1px solid #e5e7eb; /* Borda cinza clarinha */
+}
+.menu a:hover {
+  /* Efeito ao passar o mouse no link do menu */
+  background: #f8fafc; /* Fundo um pouco mais escuro para feedback */
+}
+
+/* ---------- PASSO F: CONTAINER CENTRAL --------------------------------------------------- */
+.container {
+  /* Limita a largura do conteÃºdo principal */
+  max-width: 960px; /* Largura mÃ¡xima do container */
+  margin: 1.2rem auto; /* Centraliza na tela e dÃ¡ espaÃ§o vertical */
+  padding: 0 1rem; /* Margem interna nas laterais em telas pequenas */
+}
+
+/* ---------- PASSO G: CARDS (exemplo de box model) ---------------------------------------- */
+.card {
+  /* AparÃªncia dos â€œcartÃµesâ€ (seÃ§Ãµes) */
+  background: var(--fundo-card); /* Fundo branco do card */
+  border: 1px solid var(--borda-card); /* Borda sutil */
+  border-radius: 12px; /* Cantos arredondados elegantes */
+  padding: 1rem; /* EspaÃ§o interno do card */
+  margin: 1rem 0; /* EspaÃ§o externo para separar cards */
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05); /* Sombra leve (profundidade) */
+}
+.card p {
+  /* ParÃ¡grafos DENTRO de .card */
+  color: #334155; /* Levemente mais escuro para contraste confortÃ¡vel */
+} /* ObservaÃ§Ã£o: .card p tem especificidade maior que apenas p */
+
+/* Pequena divisÃ£o visual dentro de artigos da seÃ§Ã£o */
+.caixa {
+  margin-top: 0.5rem; /* EspaÃ§o acima da caixinha */
+  padding-top: 0.25rem; /* EspaÃ§o interno no topo */
+  border-top: 2px dashed #e5e7eb; /* Linha tracejada separando conteÃºdos */
+}
+
+/* ---------- PASSO H: ID (especificidade mais alta) --------------------------------------- */
+#destaque {
+  /* ID para destacar um parÃ¡grafo especÃ­fico */
+  background: #fff7ed; /* Fundo levemente alaranjado */
+  border-left: 4px solid var(--cor-secundaria); /* Barra lateral laranja */
+  padding: 0.5rem; /* EspaÃ§o interno */
+}
+
+/* ---------- PASSO I: DEMONSTRAÃ‡ÃƒO DO BOX MODEL ------------------------------------------- */
+.box-model-demo {
+  /* Caixinha para explicar content/padding/border/margin */
+  background: #eef2ff; /* Fundo lilÃ¡s claro (content) */
+  border: 4px solid #a5b4fc; /* Borda grossa para ficar visÃ­vel (border) */
+  padding: 16px; /* EspaÃ§o entre conteÃºdo e borda (padding) */
+  margin: 12px 0; /* EspaÃ§o externo separando de outros elementos (margin) */
+  display: inline-block; /* Ocupa sÃ³ o necessÃ¡rio e permite ficar ao lado, se couber */
+}
+
+/* ---------- PASSO J: INLINE vs BLOCK ----------------------------------------------------- */
+.tag-inline {
+  /* MarcaÃ§Ã£o visual para um elemento inline (span) */
+  background: #dcfce7; /* Fundo verdinho */
+  border: 1px solid #86efac; /* Borda verde clara */
+  padding: 2px 6px; /* Pequeno â€œacolchoamentoâ€ ao redor do texto */
+}
+
+/* ---------- PASSO K: TABELA BÃSICA ------------------------------------------------------- */
+.tabela {
+  /* Tabela de exemplo */
+  width: 100%; /* Toma toda a largura disponÃ­vel */
+  border-collapse: collapse; /* Junta as bordas para um visual mais limpo */
+  background: var(--fundo-tabela); /* Fundo suave para diferenciar da pÃ¡gina */
+}
+.tabela th, /* CabeÃ§alhos de coluna... */
+.tabela td {
+  /* ...e cÃ©lulas normais compartilham estilos */
+  text-align: left; /* Alinha textos Ã  esquerda (padrÃ£o em tabelas) */
+  padding: 0.6rem; /* EspaÃ§o interno nas cÃ©lulas */
+  border-bottom: 1px solid #e2e8f0; /* Linha separando as linhas da tabela */
+}
+.tabela thead th {
+  /* CabeÃ§alho da tabela especificamente */
+  background: #e2e8f0; /* Fundo cinza para diferenciar do corpo */
+}
+
+/* ---------- PASSO L: FORMULÃRIO ---------------------------------------------------------- */
+.formulario {
+  /* Container do formulÃ¡rio */
+  max-width: 520px; /* Limita a largura para melhor leitura */
+}
+.formulario .grupo {
+  /* Grupos (label + input/textarea) */
+  display: flex; /* Usa flex para organizar */
+  flex-direction: column; /* Empilha rÃ³tulo e campo na vertical */
+  margin-bottom: 0.8rem; /* EspaÃ§o entre os grupos */
+}
+.formulario label {
+  /* RÃ³tulos dos campos */
+  font-weight: 600; /* Negrito leve para destacar o rÃ³tulo */
+  margin-bottom: 0.25rem; /* EspaÃ§o entre o rÃ³tulo e o campo */
+}
+.formulario input, /* Campos de entrada de texto... */
+.formulario textarea {
+  /* ...e Ã¡rea de texto compartilham estilos */
+  padding: 0.6rem 0.7rem; /* EspaÃ§o interno para conforto na digitaÃ§Ã£o */
+  border: 1px solid #cbd5e1; /* Borda cinza clara */
+  border-radius: 0.5rem; /* Cantos arredondados */
+  font: inherit; /* Usa a mesma fonte do body */
+  background: #ffffff; /* Fundo branco */
+}
+.formulario input:focus, /* Quando o campo recebe foco (teclado/click) */
+.formulario textarea:focus {
+  /* Aplica tambÃ©m ao textarea */
+  outline: 2px solid var(--cor-primaria); /* Borda externa azul (acessibilidade) */
+  border-color: var(
+    --cor-primaria
+  ); /* Harmoniza a borda com a cor do outline */
+}
+.formulario button {
+  /* BotÃ£o de enviar */
+  padding: 0.65rem 1rem; /* Tamanho confortÃ¡vel para clicar */
+  border: 0; /* Remove borda padrÃ£o do botÃ£o */
+  border-radius: 0.6rem; /* Cantos arredondados */
+  background: var(--cor-primaria); /* Fundo azul (destaque) */
+  color: #ffffff; /* Texto branco */
+  font-weight: 600; /* Deixa o texto mais marcante */
+  cursor: pointer; /* Mostra â€œmÃ£ozinhaâ€ ao passar por cima */
+}
+.formulario button:hover {
+  /* Efeito ao passar o mouse */
+  filter: brightness(0.95); /* Escurece de leve para feedback */
+}
+
+/* ---------- PASSO M: RODAPÃ‰ -------------------------------------------------------------- */
+.rodape {
+  /* Ãrea final da pÃ¡gina */
+  text-align: center; /* Centraliza o conteÃºdo do rodapÃ© */
+  padding: 2rem 1rem 3rem; /* EspaÃ§os generosos para respirar */
+  color: #64748b; /* Cinza mÃ©dio, menos contraste que o corpo */
+}
+
+/* ---------- PASSO N: MEDIA QUERY (RESPONSIVIDADE) ---------------------------------------- */
+/* Ajustes para telas pequenas (atÃ© 640px de largura) */
+@media (max-width: 640px) {
+  h1 {
+    /* TÃ­tulo principal menor em telas pequenas */
+    font-size: 1.6rem; /* Reduz o tamanho para caber melhor */
+  }
+  .menu {
+    /* Menu se adapta em telas estreitas */
+    flex-wrap: wrap; /* Quebra linha quando nÃ£o couber tudo em uma sÃ³ */
+    gap: 0.5rem; /* EspaÃ§o ligeiramente menor entre itens */
+  }
+  .menu a {
+    /* Links do menu um pouco mais compactos */
+    padding: 0.45rem 0.65rem; /* Reduz o padding para caber melhor */
+  }
+}
