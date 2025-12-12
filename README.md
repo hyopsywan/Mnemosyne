@@ -28,5 +28,5 @@ Ambas são linguagens de marcação fundamentais na criação de páginas web. O
 </details
 
   
-![HTML + CSS](./htmlcssfish.png)
+![HTML + CSS](./htmlcssfish2.png)
 
