@@ -28,5 +28,5 @@ Ambas são linguagens de marcação fundamentais na criação de páginas web. O
 </details
 
   
-![HTML + CSS](<img width="4960" height="3508" alt="htmlcssfish" src="https://github.com/user-attachments/assets/bcc235d4-f99e-40ce-8451-85bb08c1dbd3" />
-)
+![HTML + CSS](./htmlcssfish.png)
+
